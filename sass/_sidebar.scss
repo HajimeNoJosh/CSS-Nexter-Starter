@@ -7,27 +7,60 @@
   // cursor: pointer;
 }
 
-.nav-btn {
-  border: none;
-  border-radius: 0;
-  background-color: white;
-  height: 2px;
-  width: 4.5rem;
-  margin-top: 4rem;
+.nav {
+  &__checkbox {
+    display: none;
+  }
+  //ICON
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
 
-  &::before,
-  &::after {
-    content: "";
-    background-color: white;
-    height: 2px;
-    width: 4.5rem;
-    display: block;
+    &,
+    &::after,
+    &::before {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+
+    &::after {
+      top: 0.8rem;
+    }
   }
 
-  &::before {
-    transform: translateY(-1.5rem);
+  &__button:hover &__icon::before {
+    top: -1rem;
   }
-  &::after {
-    transform: translateY(1.3rem);
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 }
