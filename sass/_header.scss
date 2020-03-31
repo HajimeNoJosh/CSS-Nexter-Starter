@@ -11,12 +11,17 @@
   padding: 8rem;
   padding-top: 4rem;
   display: grid;
-  grid-template-rows: 1fr -webkit-min-content minmax(6rem, -webkit-min-content) 1fr;
   grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
-  grid-template-columns: minmax(-webkit-min-content, -webkit-max-content);
   grid-template-columns: minmax(min-content, max-content);
   grid-row-gap: 1.5rem;
   justify-content: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
+  @media only screen and (max-width: $bp-small) {
+    padding: 5rem;
+  }
 
   &__logo {
     height: 3rem;
@@ -30,7 +35,6 @@
 
   &__seenon-text {
     display: grid;
-    grid-template-columns: 1fr -webkit-max-content 1fr;
     grid-template-columns: 1fr max-content 1fr;
     grid-column-gap: 1.5rem;
     align-items: center;
